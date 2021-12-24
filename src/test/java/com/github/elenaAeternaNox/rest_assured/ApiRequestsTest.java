@@ -1,18 +1,8 @@
 package com.github.elenaAeternaNox.rest_assured;
 
 import io.restassured.RestAssured;
-import org.assertj.core.error.ShouldBeToday;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
@@ -58,10 +48,6 @@ public class ApiRequestsTest {
     @Test
     void createUser() {
         body = "{ \"name\": \"morpheus\", \"job\": \"leader\" }";
-
-        Instant input = LocalDateTime.now().atZone(ZoneId.systemDefault()).withZoneSameInstant(ZoneId.of("UTC")).toInstant();
-        Instant instant = Instant.parse(input.toString());
-        System.out.println ( "instant: " + instant );
 
         given()
                 .contentType(JSON)
